@@ -1,0 +1,26 @@
+{
+  "name": "library-project",
+  "version": "1.0.0",
+  "description": "This is the library project from The Odin Project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/armin-164/library-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/armin-164/library-project/issues"
+  },
+  "homepage": "https://github.com/armin-164/library-project#readme",
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "2.8.4"
+  }
+}
