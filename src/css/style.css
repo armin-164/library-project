@@ -117,14 +117,75 @@ h1 {
 
 .popup {
     position: absolute;
-    bottom: 100px;
-    padding: 100px;
+    padding: 50px 50px 75px 50px;
     border: 1px solid blue;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto;
-    width: 20vw;
-    height: 20vw;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 10px;
 }
+
+.popup > p {
+    font-size: 3em;
+    font-weight: bolder;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.popup > .booktextinputs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.booktextinputs > .readstatus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-size: 25px;
+}
+
+.bookinfo:focus {
+    outline: none;
+}
+
+.booktextinputs > .bookinfo {
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
+    font-size: 1vw;
+    width: 20vw;
+    border: 0;
+    box-shadow: 0 0 4px 2px red;
+}
+
+.checkbox {
+    height: 25px;
+    width: 25px;
+    accent-color: rgb(76, 218, 76);
+}
+
+.submitbutton {
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: 0 0 3px black;
+    font-size: 2vw;
+    font-family: "Norse", sans-serif;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: red;
+}
+
+.submitbutton:active {
+    box-shadow: 0 0 5px 2px black;
+  }
