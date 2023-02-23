@@ -1,25 +1,15 @@
 const bookContainer = document.querySelector(".bookcontainer");
 const popup = document.querySelector(".popup");
 const addBook = document.querySelector(".addbookbutton");
+const submitButton = document.querySelector(".submitbutton");
 
-addBook.addEventListener("click", () => { popup.style.visibility = "visible" } );
+addBook.addEventListener("click", () => {
+  popup.style.visibility = "visible";
+});
 
-const myLibrary = [
-  {
-    title: "The Hobbit",
-    author: "JRR Tolkien",
-    pages: 295,
-    readstatus: "Have read",
-  },
-  {
-    title: "The",
-    author: "Dr Dre",
-    pages: 295,
-    readstatus: "Have read",
-  },
-];
+const myLibrary = [];
 
-// This is the book constructor 
+// This is the book constructor
 function Book(title, author, pages, readstatus) {
   this.title = `Title: ${title}`;
   this.author = `Author: ${author}`;
@@ -59,10 +49,31 @@ function createBookElements(book) {
   bookBox.appendChild(bookBoxButtons);
 }
 
-
 // This function adds the books to the library in HTML
 function addBookToLibrary() {
   myLibrary.forEach((object) => createBookElements(object));
 }
 
-addBookToLibrary()
+const resetLibrary = function () {
+  while (bookContainer.firstChild) {
+    bookContainer.removeChild(bookContainer.firstChild);
+  }
+};
+
+submitButton.addEventListener("click", () => {
+  const allInputs = document.querySelectorAll('input[class="bookinfo"]');
+  const bookTitle = document.querySelector('input[name="title"]');
+  const bookAuthor = document.querySelector('input[name="author"]');
+  const bookPages = document.querySelector('input[name="pages"]');
+  const book = new Book(
+    bookTitle.value,
+    bookAuthor.value,
+    bookPages.value,
+    "read"
+  );
+  popup.style.visibility = "hidden";
+  resetLibrary();
+  myLibrary.push(book);
+  addBookToLibrary();
+  allInputs.forEach((input) => (input.value = ""));
+});
