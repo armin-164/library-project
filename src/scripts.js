@@ -16,7 +16,7 @@ const myLibrary = [
   },
 ];
 
-
+// This is the book constructor 
 function Book(title, author, pages, readstatus) {
   this.title = `Title: ${title}`;
   this.author = `Author: ${author}`;
@@ -28,6 +28,7 @@ function Book(title, author, pages, readstatus) {
   };
 }
 
+// This function will create the books
 function createBookElements(book) {
   const bookBox = document.createElement("div");
   const bookBoxButtons = document.createElement("div");
@@ -55,13 +56,15 @@ function createBookElements(book) {
   bookBox.appendChild(bookBoxButtons);
 }
 
+// This function serves to toggle element visibility
 function show(element, visibility) {
   element.style.visibility = visibility;
 }
 
+// This function adds the books to the library in HTML
 function addBookToLibrary() {
   show(popup, "visible");
-  myLibrary.forEach((book) => createBookElements(book));
+  myLibrary.forEach((object) => createBookElements(object));
 }
 
 addBookToLibrary()
