@@ -1,5 +1,8 @@
 const bookContainer = document.querySelector(".bookcontainer");
 const popup = document.querySelector(".popup");
+const addBook = document.querySelector(".addbookbutton");
+
+addBook.addEventListener("click", () => { popup.style.visibility = "visible" } );
 
 const myLibrary = [
   {
@@ -56,14 +59,9 @@ function createBookElements(book) {
   bookBox.appendChild(bookBoxButtons);
 }
 
-// This function serves to toggle element visibility
-function show(element, visibility) {
-  element.style.visibility = visibility;
-}
 
 // This function adds the books to the library in HTML
 function addBookToLibrary() {
-  show(popup, "visible");
   myLibrary.forEach((object) => createBookElements(object));
 }
 
