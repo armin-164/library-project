@@ -1,4 +1,5 @@
 const bookContainer = document.querySelector(".bookcontainer");
+const popup = document.querySelector(".popup");
 
 const myLibrary = [
   {
@@ -54,8 +55,12 @@ function createBookElements(book) {
   bookBox.appendChild(bookBoxButtons);
 }
 
+function show(element, visibility) {
+  element.style.visibility = visibility;
+}
 
 function addBookToLibrary() {
+  show(popup, "visible");
   myLibrary.forEach((book) => createBookElements(book));
 }
 
