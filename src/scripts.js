@@ -40,6 +40,9 @@ function createBookElements(book) {
   const statusbutton = document.createElement("button");
   const removebutton = document.createElement("button");
 
+  statusbutton.classList.add("statusbutton");
+  removebutton.classList.add("removebutton");
+
   statusbutton.innerText = book.readstatus;
   removebutton.innerText = "Remove";
 
