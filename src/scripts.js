@@ -64,19 +64,23 @@ const resetLibrary = function () {
 };
 
 submitButton.addEventListener("click", () => {
-  const allInputs = document.querySelectorAll('input[class="bookinfo"]');
   const bookTitle = document.querySelector('input[name="title"]');
   const bookAuthor = document.querySelector('input[name="author"]');
   const bookPages = document.querySelector('input[name="pages"]');
-  const book = new Book(
-    bookTitle.value,
-    bookAuthor.value,
-    bookPages.value,
-    "read"
-  );
-  popup.style.visibility = "hidden";
-  resetLibrary();
-  myLibrary.push(book);
-  addBookToLibrary();
-  allInputs.forEach((input) => (input.value = ""));
+
+  if (bookTitle.value && bookAuthor.value && bookPages.value) {
+    const book = new Book(
+      bookTitle.value,
+      bookAuthor.value,
+      bookPages.value,
+      "read"
+    );
+    popup.style.visibility = "hidden";
+    resetLibrary();
+    myLibrary.push(book);
+    addBookToLibrary();
+    bookTitle.value = "";
+    bookAuthor.value = "";
+    bookPages.value = "";
+  }
 });
