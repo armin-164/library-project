@@ -50,6 +50,10 @@ function createBookElements(book) {
   bookContainer.appendChild(bookBox);
   bookBox.append(firstP, secondP, thirdP);
   bookBox.appendChild(bookBoxButtons);
+
+  statusbutton.addEventListener("click",() =>
+    (statusbutton.innerText = statusbutton.innerText === "Read" ? "Not Read" : "Read")
+  );
 }
 
 // This function adds the books to the library in HTML
