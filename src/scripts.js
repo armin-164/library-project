@@ -64,16 +64,23 @@ const resetLibrary = function () {
 };
 
 submitButton.addEventListener("click", () => {
+  event.preventDefault();
   const bookTitle = document.querySelector('input[name="title"]');
   const bookAuthor = document.querySelector('input[name="author"]');
   const bookPages = document.querySelector('input[name="pages"]');
+  const bookCheckBox = document.querySelector('input[type="checkbox"]');
+  let bookReadStatus = "";
+
+  bookCheckBox.checked ? bookReadStatus = "Read" : bookReadStatus = "Not read";
+
+
 
   if (bookTitle.value && bookAuthor.value && bookPages.value) {
     const book = new Book(
       bookTitle.value,
       bookAuthor.value,
       bookPages.value,
-      "read"
+      bookReadStatus
     );
     popup.style.visibility = "hidden";
     resetLibrary();
