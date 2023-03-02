@@ -80,13 +80,14 @@ body {
     border-top: 20px solid red;
     font-family: "Quicksand", sans-serif;
     text-align: center;
+    padding-bottom: 20px;
 }
 
 .book > .bookbuttons {
     display: flex;
     flex-direction: column;
-    padding-top: 20px;
     gap: 10px;
+    margin-top: auto;
 }
 
 .bookbuttons button {
