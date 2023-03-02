@@ -12,9 +12,9 @@ const myLibrary = [];
 
 // This is the book constructor
 function Book(title, author, pages, readstatus) {
-  this.title = `Title: ${title}`;
-  this.author = `Author: ${author}`;
-  this.pages = `Pages: ${pages}`;
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
   this.readstatus = readstatus;
 
   this.info = function () {
