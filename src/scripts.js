@@ -52,11 +52,21 @@ function createBookElements(book, index) {
   bookBox.append(firstP, secondP, thirdP);
   bookBox.appendChild(bookBoxButtons);
 
-  statusbutton.addEventListener("click",() =>
-    (statusbutton.innerText = statusbutton.innerText === "Read" ? "Not Read" : "Read")
-  );
+  statusbutton.addEventListener("click", () => {
+   // statusbutton.innerText = statusbutton.innerText === "Read" ? "Not Read" : "Read";
 
-  removebutton.addEventListener("click", () => removeBookFromLibrary(removebutton.getAttribute("data-index"), bookBox));
+    if (statusbutton.innerText === "Read") {
+      statusbutton.innerText = "Not Read";
+      book.readstatus = "Not Read";
+    } else {
+      statusbutton.innerText = "Read";
+      book.readstatus = "Read";
+    }
+  });
+
+  removebutton.addEventListener("click", () =>
+    removeBookFromLibrary(removebutton.getAttribute("data-index"), bookBox)
+  );
 }
 
 function removeBookFromLibrary(id, element) {
@@ -83,9 +93,9 @@ submitButton.addEventListener("click", () => {
   const bookCheckBox = document.querySelector('input[type="checkbox"]');
   let bookReadStatus = "";
 
-  bookCheckBox.checked ? bookReadStatus = "Read" : bookReadStatus = "Not read";
-
-
+  bookCheckBox.checked
+    ? (bookReadStatus = "Read")
+    : (bookReadStatus = "Not read");
 
   if (bookTitle.value && bookAuthor.value && bookPages.value) {
     const book = new Book(
