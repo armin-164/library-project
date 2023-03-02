@@ -3,6 +3,7 @@ const popup = document.querySelector(".popup");
 const addBook = document.querySelector(".addbookbutton");
 const submitButton = document.querySelector(".submitbutton");
 
+// Add eventlistener that makes the popup visible on addbook click
 addBook.addEventListener("click", () => {
   popup.style.visibility = "visible";
 });
@@ -52,9 +53,8 @@ function createBookElements(book, index) {
   bookBox.append(firstP, secondP, thirdP);
   bookBox.appendChild(bookBoxButtons);
 
+  // Add eventlistener to the statusbutton that toggles between "Read" and "Not Read"
   statusbutton.addEventListener("click", () => {
-   // statusbutton.innerText = statusbutton.innerText === "Read" ? "Not Read" : "Read";
-
     if (statusbutton.innerText === "Read") {
       statusbutton.innerText = "Not Read";
       book.readstatus = "Not Read";
@@ -64,11 +64,14 @@ function createBookElements(book, index) {
     }
   });
 
+  // Add eventlistener that removes the book from the library array
+  // by matching the data-index and also removes an element
   removebutton.addEventListener("click", () =>
     removeBookFromLibrary(removebutton.getAttribute("data-index"), bookBox)
   );
 }
 
+// Function that makes the eventlistener above work
 function removeBookFromLibrary(id, element) {
   myLibrary.splice(id, 1);
   element.remove();
@@ -79,12 +82,19 @@ function addBookToLibrary() {
   myLibrary.forEach((object, index) => createBookElements(object, index));
 }
 
+// This function serves to reset the DOM Library so books wont duplicate
 const resetLibrary = function () {
   while (bookContainer.firstChild) {
     bookContainer.removeChild(bookContainer.firstChild);
   }
 };
 
+// Adds an eventlistener to the submitbutton that fetches inputs,
+// checks if checkbox is checked and creates a book if all inputs
+// are full. Also makes the popup invisible and resets the library DOM
+// and push the new book to the library array and call addBookToLibrary
+// which adds all of the book objects from the library array to the DOM.
+// And then reset the input values
 submitButton.addEventListener("click", () => {
   event.preventDefault();
   const bookTitle = document.querySelector('input[name="title"]');
