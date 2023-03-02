@@ -83,6 +83,17 @@ body {
     padding-bottom: 20px;
 }
 
+.close-button {
+  width: 30px;
+  margin-left: auto;
+  margin-bottom: auto;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  background-color: black;
+  border-radius: 4px;
+}
+
 .book > .bookbuttons {
     display: flex;
     flex-direction: column;
@@ -134,7 +145,7 @@ body {
 
 .popup {
     position: absolute;
-    padding: 50px 50px 75px 50px;
+    padding: 20px;
     border: 8px solid blue;
     box-shadow: 0 0 8px 2px red;
     left: 0;
