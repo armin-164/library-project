@@ -22,7 +22,7 @@ function Book(title, author, pages, readstatus) {
 }
 
 // This function will create the books
-function createBookElements(book) {
+function createBookElements(book, index) {
   const bookBox = document.createElement("div");
   const bookBoxButtons = document.createElement("div");
 
@@ -45,6 +45,7 @@ function createBookElements(book) {
 
   statusbutton.innerText = book.readstatus;
   removebutton.innerText = "Remove";
+  removebutton.setAttribute("data-index", index);
 
   bookBoxButtons.append(statusbutton, removebutton);
   bookContainer.appendChild(bookBox);
@@ -54,11 +55,18 @@ function createBookElements(book) {
   statusbutton.addEventListener("click",() =>
     (statusbutton.innerText = statusbutton.innerText === "Read" ? "Not Read" : "Read")
   );
+
+  removebutton.addEventListener("click", () => removeBookFromLibrary(removebutton.getAttribute("data-index"), bookBox));
+}
+
+function removeBookFromLibrary(id, element) {
+  myLibrary.splice(id, 1);
+  element.remove();
 }
 
 // This function adds the books to the library in HTML
 function addBookToLibrary() {
-  myLibrary.forEach((object) => createBookElements(object));
+  myLibrary.forEach((object, index) => createBookElements(object, index));
 }
 
 const resetLibrary = function () {
