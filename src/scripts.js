@@ -120,5 +120,6 @@ submitButton.addEventListener("click", () => {
     bookTitle.value = "";
     bookAuthor.value = "";
     bookPages.value = "";
+    bookCheckBox.checked = false;
   }
 });
