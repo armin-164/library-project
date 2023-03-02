@@ -96,7 +96,6 @@ const resetLibrary = function () {
 // which adds all of the book objects from the library array to the DOM.
 // And then reset the input values
 submitButton.addEventListener("click", () => {
-  event.preventDefault();
   const bookTitle = document.querySelector('input[name="title"]');
   const bookAuthor = document.querySelector('input[name="author"]');
   const bookPages = document.querySelector('input[name="pages"]');
