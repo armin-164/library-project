@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const bookContainer = document.querySelector(".bookcontainer");
 const popup = document.querySelector(".popup");
 const addBook = document.querySelector(".addbookbutton");
@@ -6,9 +7,10 @@ const closeButton = document.querySelector(".close-button");
 popup.style.visibility = "hidden";
 
 // Add function that toggles element visibility
-const toggleVisibility = function(element) {
-  element.style.visibility = element.style.visibility === "hidden" ? "visible" : "hidden";
-}
+const toggleVisibility = (element) => {
+  element.style.visibility =
+    element.style.visibility === "hidden" ? "visible" : "hidden";
+};
 
 // Add eventlistener that makes the popup visible on addbook and closebutton click
 addBook.addEventListener("click", () => toggleVisibility(popup));
@@ -17,15 +19,19 @@ closeButton.addEventListener("click", () => toggleVisibility(popup));
 const myLibrary = [];
 
 // This is the book constructor
-function Book(title, author, pages, readstatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.readstatus = readstatus;
+class Book {
+  constructor(title, author, pages, readstatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.readstatus = readstatus;
+  }
+}
 
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${readstatus}`;
-  };
+// Function that makes the eventlistener above work
+const removeBookFromLibrary = (id, element) => {
+  myLibrary.splice(id, 1);
+  element.remove();
 }
 
 // This function will create the books
@@ -61,37 +67,27 @@ function createBookElements(book, index) {
 
   // Add eventlistener to the statusbutton that toggles between "Read" and "Not Read"
   statusbutton.addEventListener("click", () => {
-    if (statusbutton.innerText === "Read") {
-      statusbutton.innerText = "Not Read";
-      book.readstatus = "Not Read";
-    } else {
-      statusbutton.innerText = "Read";
-      book.readstatus = "Read";
-    }
+    const newStatus = statusbutton.innerText === "Read" ? "Not Read" : "Read";
+    statusbutton.innerText = newStatus;
+    book.readstatus = newStatus;
   });
 
   // Add eventlistener that removes the book from the library array
   // by matching the data-index and also removes an element
   removebutton.addEventListener("click", () =>
-    removeBookFromLibrary(removebutton.getAttribute("data-index"), bookBox)
+    removeBookFromLibrary(removebutton.dataset.index, bookBox)
   );
 }
 
-// Function that makes the eventlistener above work
-function removeBookFromLibrary(id, element) {
-  myLibrary.splice(id, 1);
-  element.remove();
-}
-
 // This function adds the books to the library in HTML
-function addBookToLibrary() {
+const addBookToLibrary = () => {
   myLibrary.forEach((object, index) => createBookElements(object, index));
 }
 
 // This function serves to reset the DOM Library so books wont duplicate
-const resetLibrary = function () {
+const resetLibrary = () => {
   while (bookContainer.firstChild) {
-    bookContainer.removeChild(bookContainer.firstChild);
+    bookContainer.firstChild.remove();
   }
 };
 
@@ -106,13 +102,9 @@ submitButton.addEventListener("click", () => {
   const bookAuthor = document.querySelector('input[name="author"]');
   const bookPages = document.querySelector('input[name="pages"]');
   const bookCheckBox = document.querySelector('input[type="checkbox"]');
-  let bookReadStatus = "";
-
-  bookCheckBox.checked
-    ? (bookReadStatus = "Read")
-    : (bookReadStatus = "Not read");
 
   if (bookTitle.value && bookAuthor.value && bookPages.value) {
+    const bookReadStatus = bookCheckBox.checked ? "Read" : "Not read";
     const book = new Book(
       bookTitle.value,
       bookAuthor.value,
