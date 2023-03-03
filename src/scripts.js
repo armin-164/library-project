@@ -3,6 +3,7 @@ const popup = document.querySelector(".popup");
 const addBook = document.querySelector(".addbookbutton");
 const submitButton = document.querySelector(".submitbutton");
 const closeButton = document.querySelector(".close-button");
+popup.style.visibility = "hidden";
 
 // Add function that toggles element visibility
 const toggleVisibility = function(element) {
