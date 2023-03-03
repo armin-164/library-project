@@ -2,11 +2,16 @@ const bookContainer = document.querySelector(".bookcontainer");
 const popup = document.querySelector(".popup");
 const addBook = document.querySelector(".addbookbutton");
 const submitButton = document.querySelector(".submitbutton");
+const closeButton = document.querySelector(".close-button");
 
-// Add eventlistener that makes the popup visible on addbook click
-addBook.addEventListener("click", () => {
-  popup.style.visibility = "visible";
-});
+// Add function that toggles element visibility
+const toggleVisibility = function(element) {
+  element.style.visibility = element.style.visibility === "hidden" ? "visible" : "hidden";
+}
+
+// Add eventlistener that makes the popup visible on addbook and closebutton click
+addBook.addEventListener("click", () => toggleVisibility(popup));
+closeButton.addEventListener("click", () => toggleVisibility(popup));
 
 const myLibrary = [];
 
